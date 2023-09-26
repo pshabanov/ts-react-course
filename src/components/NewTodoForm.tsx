@@ -9,7 +9,10 @@ const NewTodoForm = ({handleClick}: NewTodoProps) => {
 	const inputRef = useRef<HTMLInputElement | null>(null)
 
 	const onClick = () => {
-		if (inputRef.current) handleClick(inputRef.current.value)
+		if (inputRef.current) {
+			handleClick(inputRef.current.value)
+			inputRef.current.value = ''
+		}
 	}
 
 	return (
