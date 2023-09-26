@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import TodoItem from './components/TodoItem'
 import NewTodoForm from './components/NewTodoForm'
@@ -10,14 +10,22 @@ function App() {
 	const [text, setText] = useState('')
 	const [todos, setTodos] = useState<Todo[]>([])
 
+	useEffect(() => {
+		fetch('https://jsonplaceholder.typicode.com/todos')
+			.then(res=> res.json())
+			.then((data: Todo[]) =>
+				setTodos(data)
+			)
+	}, [])
+
 	const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setText(event.target.value)
 	}
 	const addTodo = () => {
-		const newTodo:Todo = {
+		const newTodo: Todo = {
 			id: new Date().toString(),
 			title: text,
-			completed: false
+			completed: false,
 		}
 		setTodos([newTodo, ...todos])
 		setText('')
