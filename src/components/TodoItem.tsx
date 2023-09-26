@@ -1,9 +1,8 @@
 import React from 'react'
+import { Todo } from '../../types'
 
-export interface TodoItemProps {
-	id: string
-	title: string
-	completed: boolean
+
+export interface TodoItemProps extends Todo {
 	style?: React.CSSProperties
 }
 
