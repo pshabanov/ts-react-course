@@ -11,9 +11,9 @@ function App() {
 
 	useEffect(() => {
 		fetch('https://jsonplaceholder.typicode.com/todos')
-			.then(res=> res.json())
+			.then(res => res.json())
 			.then((data: Todo[]) =>
-				setTodos(data)
+				setTodos(data),
 			)
 	}, [])
 
@@ -30,7 +30,18 @@ function App() {
 	return (
 		<div className="App">
 			<NewTodoForm handleClick={ addTodo }/>
-			<TodoItem id="1" title="title" completed={ true } style={ {fontStyle: 'italic'} }/>
+			<ul>
+				{ todos.map((todo: Todo, index: number) =>
+					<TodoItem
+						id={ todo.id }
+						title={ todo.title }
+						completed={ todo.completed }
+						style={ {fontStyle: 'italic'} }
+						key={ todo.id }/>,
+				) }
+			</ul>
+
+
 		</div>
 	)
 }
