@@ -1,10 +1,11 @@
 import React, { useRef } from 'react'
 
-interface NewTodoProps {
+interface NewItemProps {
+	placeholder: string
 	handleClick: (text: string) => void
 }
 
-const NewTodoForm = ({handleClick}: NewTodoProps) => {
+const NewItem = ({handleClick, placeholder}: NewItemProps) => {
 
 	const inputRef = useRef<HTMLInputElement | null>(null)
 
@@ -19,7 +20,7 @@ const NewTodoForm = ({handleClick}: NewTodoProps) => {
 		<>
 			<input
 				type="text"
-				placeholder="new todo"
+				placeholder={placeholder}
 				ref={inputRef}
 			/>
 			<button onClick={ onClick }>Add todo</button>
@@ -27,4 +28,4 @@ const NewTodoForm = ({handleClick}: NewTodoProps) => {
 	)
 }
 
-export default NewTodoForm
+export default NewItem
