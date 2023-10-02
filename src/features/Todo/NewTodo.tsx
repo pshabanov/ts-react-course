@@ -1,6 +1,6 @@
 import AddNewItem from 'components/NewItem'
 import { useAppDispatch } from '../../redux-hooks'
-import { addTodo } from './todoSlide'
+import { addTodo } from './todoSlice'
 
 
 export const NewTodo = () => {

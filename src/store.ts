@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 
-import todoReducer from 'features/Todo/todoSlide'
+import todoReducer from 'features/Todo/todoSlice'
 
 const rootReducer = combineReducers({
 	todos: todoReducer
