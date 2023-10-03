@@ -14,8 +14,8 @@ function App() {
 
 			<hr/>
 
-			<NewAsyncTodo />
-			<AsyncTodoList />
+			<NewAsyncTodo/>
+			<AsyncTodoList/>
 		</div>
 	)
 }

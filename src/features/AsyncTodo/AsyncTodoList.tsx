@@ -12,14 +12,14 @@ const AsyncTodoList = () => {
 	const dispatch = useAppDispatch()
 
 	const handleRemoveTodo = (id: Todo['id']) => {
-	// 	dispatch(removeTodo(id))
+		// 	dispatch(removeTodo(id))
 	}
 	const handleToggleTodo = (id: Todo['id']) => {
-	// 	dispatch(toggleTodo(id))
+		// 	dispatch(toggleTodo(id))
 	}
 
-	useEffect(()=>{
-		dispatch(fetchAllTodos)
+	useEffect(() => {
+		dispatch(fetchAllTodos())
 	}, [])
 
 	return (<ul>
@@ -27,14 +27,14 @@ const AsyncTodoList = () => {
 			list.map((todo) => (
 				<TodoItem
 					id={ todo.id }
-			title={ todo.title }
-			completed={ todo.completed }
-			toggleTodo={ handleToggleTodo }
-			removeTodo={ handleRemoveTodo }
-			style={ {fontStyle: 'italic'} }
-	key={ todo.id }/>
-))
-}
+					title={ todo.title }
+					completed={ todo.completed }
+					toggleTodo={ handleToggleTodo }
+					removeTodo={ handleRemoveTodo }
+					style={ {fontStyle: 'italic'} }
+					key={ todo.id }/>
+			))
+		}
 	</ul>)
 }
 

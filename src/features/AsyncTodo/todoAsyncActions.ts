@@ -11,20 +11,25 @@ export const fetchAllTodos = createAsyncThunk(
 
 export const createTodo = createAsyncThunk(
 	'todo/createTodo',
-	async (text: string)=>{
-		const newTodo:Required<Omit<Todo, 'id'>> = {
-			title: text,
-			userId: 1,
-			completed: false
+	async (title: string) => {
+		const newTodo: Required<Omit<Todo, 'id'>> = {
+			title: title,
+			userId: 100,
+			completed: false,
 		}
 		const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
-			method: "POST",
+			method: 'POST',
 			headers: {
-				'Content-Type': 'json'
+				'Content-Type': 'json',
 			},
-			body: JSON.stringify(newTodo)
+			body: JSON.stringify(newTodo),
 		})
+		console.log(response, title, newTodo)
 
-		return (await response.json()) as Todo
-	}
+		return {
+			title: newTodo.title,
+			completed: newTodo.completed,
+			id: (await response.json()) + Math.random() as Todo['id'],
+		} as Todo
+	},
 )
